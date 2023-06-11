@@ -1,0 +1,6 @@
+import {Plugin,Directive} from "vue";
+
+export declare const vFocusNext2: Directive;
+export declare const vFocusNext3: Directive;
+declare const vFocusNext: Plugin;
+export default  vFocusNext;

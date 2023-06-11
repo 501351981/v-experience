@@ -1,0 +1,20 @@
+{
+  "name": "v-focus-next",
+  "version": "1.0.0",
+  "description": "vue表单指令，用于在表单中输入回车后，自动聚焦下一个表单元素",
+  "main": "dist/v-focus-next.umd.js",
+  "scripts": {
+    "postinstall": "node script/postinstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:501351981/v-focus-next.git"
+  },
+  "keywords": [
+    "vue",
+    "focus",
+    "autoFocus"
+  ],
+  "license": "MIT",
+  "author": "微信: _hit757_"
+}
