@@ -26,6 +26,36 @@ v-focus-next的使用非常简单。
 npm install v-focus-next
 ```
 
+### 项目中引入
+
+通过use方式，引入该指令中间件。
+
+Vue3示例：
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import vFocusNext from "v-focus-next";
+
+let app = createApp(App)
+app.use(vFocusNext)  //通过中间件方式引入指令
+app.mount('#app')
+```
+
+Vue2示例：
+
+````js
+import Vue from 'vue'
+import App from './App.vue'
+import vFocusNext from "v-focus-next";
+
+Vue.use(vFocusNext); //通过中间件方式引入指令
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+
+````
+
 ### 示例1
 只需为某个父元素增加v-focus-next指令，则其中所有表单元素就拥有了回车聚焦功能。
 ```html
