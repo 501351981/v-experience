@@ -1,8 +1,18 @@
+function isDisplayNone(node){
+    while (node !== document.body){
+        if(node.style.display === 'none'){
+            return true;
+        }
+        node = node.parentNode;
+    }
+    return false;
+}
 function findFirstAvailableInput(nodes){
     for(let i=0;i<nodes.length;i++){
         const input = nodes[i];
         if(input.tagName ==='INPUT'
             && !input.disabled
+            && !isDisplayNone(input)
             && !['submit', 'reset', 'file', 'hidden', 'checkbox', 'radio'].includes(input.type)
         ){
             return input;
@@ -32,6 +42,7 @@ function findAllInputs(rootDom, selector){
     },[]).filter(item=>{
         if(item.tagName ==='INPUT'
             && !item.disabled
+            && !isDisplayNone(item)
             && !['submit', 'reset', 'file', 'hidden', 'checkbox', 'radio'].includes(item.type)
         ){
             return true;

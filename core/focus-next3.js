@@ -10,6 +10,9 @@ function mounted (el, binding, vNode) {
         }
 
         let targetNode = event.target;
+        if(targetNode.tagName === 'TEXTAREA'){
+            return;
+        }
 
         let nextNode = findNextNode(vNode.el, targetNode, binding);
         if(!nextNode){

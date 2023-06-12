@@ -13,7 +13,6 @@ v-focus-next的使用非常简单。
 
 - 默认会将所有input/textarea加入回车聚焦功能，也可通过指定className等方式，将部分表单元素支持回车聚焦。
 - 支持首个表单元素自动聚焦
-- 支持自动滚动到下个表单元素 (开发中)
 - 支持任意普通Dom元素和Vue组件
 - 自动过滤掉disable的元素及type为hidden、radio、checkbox、file、submit、reset的元素
 - 支持vue2/3

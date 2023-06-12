@@ -34,6 +34,8 @@ const onSubmit = () => {
             <input/>
             <input/>
             <textarea  />
+            <input/>
+            <input/>
         </div>
     </el-card>
 
@@ -110,7 +112,9 @@ const onSubmit = () => {
            <div class="focus-next">
                <textarea  placeholder="class为focus-next"/>
            </div>
-
+            <div class="focus-next">
+                <input placeholder="class为focus-next"/>
+            </div>
         </div>
     </el-card>
 

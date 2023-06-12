@@ -11,6 +11,9 @@ function inserted (el, binding, vNode) {
         }
 
         let targetNode = event.target;
+        if(targetNode.tagName === 'TEXTAREA'){
+            return;
+        }
 
         let nextNode = findNextNode(vNode.$el || vNode.elm, targetNode, binding);
         if(!nextNode){
