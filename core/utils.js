@@ -1,17 +1,20 @@
-function isDisplayNone(node){
+function isVisible(node){
+    if(getComputedStyle(node).visibility === 'hidden'){
+        return false;
+    }
     while (node !== document.body){
-        if(node.style.display === 'none'){
-            return true;
+        if(node.style.display === 'none' || node.style.opacity === '0'){
+            return false;
         }
         node = node.parentNode;
     }
-    return false;
+    return true;
 }
 
 function isAvailableNode(node){
     if(node.tagName ==='INPUT'
         && !node.disabled
-        && !isDisplayNone(node)
+        && isVisible(node)
         && !['submit', 'reset', 'file', 'hidden', 'checkbox', 'radio'].includes(node.type)
     ){
         return true;

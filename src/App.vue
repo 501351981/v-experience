@@ -99,6 +99,9 @@ const onSubmit = () => {
             <div class="focus-next">
                 <input placeholder="class为focus-next"/>
             </div>
+            <div class="focus-next" style="opacity: 0;">
+                <input placeholder="class为focus-next" style="opacity: 1">
+            </div>
             <div>
                 <input placeholder="class为空"/>
             </div>
