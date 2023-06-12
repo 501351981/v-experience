@@ -1,6 +1,6 @@
 {
   "name": "v-focus-next",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vue表单指令，用于在表单中输入回车后，自动聚焦下一个表单元素",
   "main": "dist/v-focus-next.umd.js",
   "scripts": {

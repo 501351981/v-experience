@@ -7,61 +7,63 @@ function isDisplayNone(node){
     }
     return false;
 }
-function findFirstAvailableInput(nodes){
-    for(let i=0;i<nodes.length;i++){
-        const input = nodes[i];
-        if(input.tagName ==='INPUT'
-            && !input.disabled
-            && !isDisplayNone(input)
-            && !['submit', 'reset', 'file', 'hidden', 'checkbox', 'radio'].includes(input.type)
-        ){
-            return input;
-        }else if(input.tagName ==='TEXTAREA'
-            && !input.disabled
-        ){
-            return input;
+
+function isAvailableNode(node){
+    if(node.tagName ==='INPUT'
+        && !node.disabled
+        && !isDisplayNone(node)
+        && !['submit', 'reset', 'file', 'hidden', 'checkbox', 'radio'].includes(node.type)
+    ){
+        return true;
+    }else if(node.tagName ==='TEXTAREA'
+        && !node.disabled
+    ){
+        return true;
+    }
+    return false;
+}
+function findFirstAvailableInput(rootDom, selector){
+    let nodes = [...rootDom.querySelectorAll(selector)]
+
+    for(let i = 0; i < nodes.length; i++){
+        let node = nodes[i];
+        if(['INPUT', 'TEXTAREA'].includes(node.tagName)) {
+            if(isAvailableNode(node)){
+                return node;
+            }
+        }else{
+            let childNodes = node.querySelectorAll('input, textarea');
+            let childNode = [...childNodes].find(node => isAvailableNode(node));
+            if(childNode){
+                return childNode;
+            }
         }
     }
+    return null;
 }
 
 function findAllInputs(rootDom, selector){
     return [...rootDom.querySelectorAll(selector)].reduce(function(nodes, node) {
         if(['INPUT', 'TEXTAREA'].includes(node.tagName)) {
-            nodes.push(node);
-            return nodes;
-        }
-        let childNodes = node.querySelectorAll('input, textarea');
-        if(childNodes.length){
-            let childNode = findFirstAvailableInput(childNodes)
-            if(childNode){
-                nodes.push(childNode);
+            if(isAvailableNode(node)){
+                nodes.push(node);
             }
             return nodes;
         }
-        return nodes;
-    },[]).filter(item=>{
-        if(item.tagName ==='INPUT'
-            && !item.disabled
-            && !isDisplayNone(item)
-            && !['submit', 'reset', 'file', 'hidden', 'checkbox', 'radio'].includes(item.type)
-        ){
-            return true;
-        }else if(item.tagName ==='TEXTAREA'
-            && !item.disabled
-        ){
-            return true;
+        let childNodes = [...node.querySelectorAll('input, textarea')].filter(node => isAvailableNode(node));
+        if(childNodes.length){
+            nodes.push(...childNodes);
+            return nodes;
         }
-        return false;
-    })
+        return nodes;
+    },[])
 }
 
 export function autoFocus(rootDom, binding){
     let selector = binding.value || 'input, textarea';
-    let nodes = findAllInputs(rootDom, selector);
-    if(nodes.length){
-        setTimeout(()=>{
-            nodes[0].focus()
-        })
+    let node = findFirstAvailableInput(rootDom, selector);
+    if(node){
+        node.focus();
     }
 }
 export function findNextNode(rootDom, targetNode, binding){
@@ -81,7 +83,7 @@ export function findNextNode(rootDom, targetNode, binding){
     if(isByCompare){
         return nodes[index]
     }else{
-        if(index === -1 || index == nodes.length - 1){
+        if(index === -1 || index === nodes.length - 1){
             return null;
         }
         return nodes[index + 1];

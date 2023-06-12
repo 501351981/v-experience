@@ -112,7 +112,9 @@ const onSubmit = () => {
            <div class="focus-next">
                <textarea  placeholder="class为focus-next"/>
            </div>
+            <input class="focus-next" placeholder="class为focus-next"/>
             <div class="focus-next">
+                <input placeholder="class为focus-next"/>
                 <input placeholder="class为focus-next"/>
             </div>
         </div>
