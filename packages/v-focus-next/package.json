@@ -1,0 +1,15 @@
+{
+  "name": "v-focus-next",
+  "version": "1.0.4",
+  "description": "vue表单指令，用于在表单中输入回车后，自动聚焦下一个表单元素",
+  "main": "lib/dist/v-focus-next.umd.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "vite build --config=vite.lib.config.js",
+    "postinstall": "node lib/script/postinstall.js"
+  }
+}
