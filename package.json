@@ -1,25 +1,24 @@
 {
-  "name": "v-focus-next",
+  "name": "v-experience",
   "version": "0.0.7",
-  "description": "vue表单指令，用于在表单中输入回车后，自动聚焦下一个表单元素",
-  "main": "lib/v-focus-next.umd.js",
-  "files": [
-    "lib/"
-  ],
+  "description": "提升网站的体验的常用Vue指令",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "copyFile": "cp README.md lib/README.md",
-    "lib": "vite build --config=vite.lib.config.js && npm run copyFile",
-    "postinstall": "node lib/script/postinstall.js"
+    "lib": "lerna run build"
   },
   "dependencies": {
     "element-plus": "^2.3.6",
-    "vue": "^3.2.47"
+    "lerna": "^7.1.1",
+    "vue": "^3.2.47",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
     "vite": "^4.3.9"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

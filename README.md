@@ -3,7 +3,7 @@
 
 v-focus-next是一个Vue指令，使用该指令后，在表单的某个元素中输入回车符，可以自动聚焦到下一个表单元素，避免了用户通过鼠标来回选中表单元素，大大提升了表单填写的效率和用户体验。
 
-[《演示效果》](https://501351981.github.io/v-focus-next/dist/)
+[《演示效果》](https://501351981.github.io/v-experience/dist#/v-focus-next)
 
 v-focus-next的使用非常简单。
 
